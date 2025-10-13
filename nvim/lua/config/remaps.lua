@@ -27,15 +27,15 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>q", ":q<CR>", opts)
 
 -- Go to definition(s)
-vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { desc = "LSP: Go to definition(s)" })
+keymap("n", "<leader>d", vim.lsp.buf.definition, { desc = "LSP: Go to definition(s)" })
 
 -- Go to implementation(s)
-vim.keymap.set("n", "<leader>i", function()
+keymap("n", "<leader>i", function()
   telescope.lsp_implementations({ jump_type = "replace" })
 end, { desc = "LSP: Go to implementation(s)" })
 
 -- Go to usage(s) / references
-vim.keymap.set("n", "<leader>u", function()
+keymap("n", "<leader>u", function()
   telescope.lsp_references({ include_declaration = false, jump_type = "replace" })
 end, { desc = "LSP: Go to usage(s)" })
 
@@ -49,12 +49,16 @@ local function project_root()
   end
 end
 
--- find files (Shift+Shift in GoLand)
+-- navigation
+-- (<leader>ft opens the file tree, configured in plugins/nvim-tree.lua)
+keymap("n", "<leader>fr", function ()
+  telescope.oldfiles({ initial_mode = "normal" })
+end, { desc = "Find recent files" })
+
 keymap("n", "<leader>ff", function()
   telescope.find_files({ cwd = project_root() })
 end, { desc = "Find files from project root" })
 
--- global text search (Cmd+Shift+F in GoLand)
 keymap("n", "<leader>fg", function()
   telescope.live_grep({ cwd = project_root() })
 end, { desc = "Search text from project root" })
@@ -77,3 +81,4 @@ keymap("n", "<leader>hd", gitsigns.preview_hunk, { desc = "Preview hunk" })
 keymap("n", "<leader>e", function()
   vim.diagnostic.open_float(nil, { focus = false, scope = "cursor", border = "rounded" })
 end, { desc = "Show diagnostics at cursor" })
+
