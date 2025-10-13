@@ -4,3 +4,5 @@ font-size   = 20
 window-padding-x = 15
 window-padding-y = 15
 window-save-state = always
+
+keybind = ctrl+j=goto_split:next
