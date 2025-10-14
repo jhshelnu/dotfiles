@@ -39,6 +39,17 @@ keymap("n", "<leader>u", function()
   telescope.lsp_references({ include_declaration = false, jump_type = "replace" })
 end, { desc = "LSP: Go to usage(s)" })
 
+-- LSP
+keymap("n", "<leader>lh", vim.lsp.buf.hover,         opts)
+keymap("n", "<leader>lr", vim.lsp.buf.rename,        opts)
+keymap("n", "<leader>la", vim.lsp.buf.code_action,   opts)
+keymap("n", "<leader>ll", vim.diagnostic.open_float, opts)
+keymap("n", "<leader>lp", vim.diagnostic.goto_prev,  opts)
+keymap("n", "<leader>ln", vim.diagnostic.goto_next,  opts)
+keymap("n", "<leader>lf", function()
+  telescope.diagnostics({ bufnr = 0, initial_mode = "normal" })
+end, opts)
+
 -- helper to detect project root (via Git)
 local function project_root()
   local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
