@@ -71,11 +71,19 @@ keymap("n", "<leader>fr", function ()
 end, { desc = "Find recent files" })
 
 keymap("n", "<leader>ff", function()
-  telescope.find_files({ cwd = project_root() })
+  telescope.find_files({
+    cwd = project_root(),
+    hidden = true,
+    no_ignore = true,
+  })
 end, { desc = "Find files from project root" })
 
 keymap("n", "<leader>fg", function()
-  telescope.live_grep({ cwd = project_root() })
+  telescope.live_grep({
+    cwd = project_root(),
+    hidden = true,
+    no_ignore = true,
+  })
 end, { desc = "Search text from project root" })
 
 -- running tests

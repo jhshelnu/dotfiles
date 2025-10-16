@@ -50,7 +50,7 @@ return {
     view = { width = 32, side = "left" },
     renderer = { group_empty = true },
     update_focused_file = { enable = true, update_root = true },
-    filters = { dotfiles = false, git_ignored = true },
+    filters = { dotfiles = false, git_ignored = false },
     git = { enable = true },
     disable_netrw = true,
     hijack_netrw = true,

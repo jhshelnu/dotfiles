@@ -1,51 +1,74 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig",
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    {
       "williamboman/mason.nvim",
-      "hrsh7th/cmp-nvim-lsp",
+      cmd = { "Mason", "MasonInstall", "MasonUpdate" },
+      opts = function()
+        require("mason").setup()
+      end,
     },
-    config = function()
-      local lspconfig = require("lspconfig")
-      local mason_lsp = require("mason-lspconfig")
-      local caps = require("cmp_nvim_lsp").default_capabilities()
-      local telescope = require("telescope.builtin")
-
-      mason_lsp.setup({
-        ensure_installed = { "lua_ls", "gopls", "rust_analyzer", "jsonls" },
-        automatic_installation = true,
-        handlers = {
-          -- default for every server
-          function(server)
-            lspconfig[server].setup({
-              capabilities = caps,
-            })
-          end,
-
-          ["lua_ls"] = function()
-            require("lspconfig").lua_ls.setup {
-              settings = {
-                Lua = {
-                  diagnostics = {
-                    globals = { "vim" },
-                  },
-                },
-              },
-            }
-          end,
-        },
-      })
-
-      -- set go build tags
-      vim.env.GOFLAGS = "-tags=integration"
-    end,
+    {
+      "williamboman/mason-lspconfig.nvim",
+      opts = function()
+        require("mason-lspconfig").setup()
+      end,
+    },
   },
+  config = function()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem = {
+      documentationFormat = { "markdown", "plaintext" },
+      snippetSupport = true,
+      preselectSupport = true,
+      insertReplaceSupport = true,
+      labelDetailsSupport = true,
+      deprecatedSupport = true,
+      commitCharactersSupport = true,
+      tagSupport = { valueSet = { 1 } },
+      resolveSupport = {
+        properties = {
+          "documentation",
+          "detail",
+          "additionalTextEdits",
+        },
+      },
+    }
+
+    local go_settings = {
+      gopls = {
+        gofumpt = true,
+        usePlaceholders = true,
+        completeUnimported = true,
+        staticcheck = true,
+        buildFlags = { "-tags=integration" },
+      },
+    }
+
+    local ok, prefixTable = pcall(require, "local.go_import_prefixes")
+    if ok then
+      local prefixes = table.concat(prefixTable, ",")
+        go_settings.gopls["formatting.local"] = prefixes
+    end
+
+    vim.lsp.config("gopls", {
+      capabilities = capabilities,
+      settings = go_settings,
+    })
+
+    vim.lsp.config("rust_analyzer", {
+      capabilities = capabilities,
+    })
+
+    vim.lsp.config("lua_ls", {
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { "vim" },
+          },
+        },
+      },
+    })
+  end,
 }
