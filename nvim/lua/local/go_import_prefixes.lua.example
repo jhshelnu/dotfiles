@@ -1,0 +1,4 @@
+return {
+    -- comma separated list of import prefixes 
+    -- to be considered "local" when gopls groups imports.
+}

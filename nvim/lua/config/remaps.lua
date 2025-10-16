@@ -27,16 +27,20 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>q", ":q<CR>", opts)
 
 -- Go to definition(s)
-keymap("n", "<leader>d", vim.lsp.buf.definition, { desc = "LSP: Go to definition(s)" })
+keymap("n", "<leader>jd", vim.lsp.buf.definition, { desc = "LSP: Go to definition(s)" })
 
 -- Go to implementation(s)
-keymap("n", "<leader>i", function()
-  telescope.lsp_implementations({ jump_type = "replace" })
+keymap("n", "<leader>ji", function()
+  telescope.lsp_implementations({ jump_type = "replace", initial_mode = "normal" })
 end, { desc = "LSP: Go to implementation(s)" })
 
 -- Go to usage(s) / references
-keymap("n", "<leader>u", function()
-  telescope.lsp_references({ include_declaration = false, jump_type = "replace" })
+keymap("n", "<leader>ju", function()
+  telescope.lsp_references({
+    include_declaration = false,
+    jump_type = "replace",
+    initial_mode = "normal"
+  })
 end, { desc = "LSP: Go to usage(s)" })
 
 -- LSP
