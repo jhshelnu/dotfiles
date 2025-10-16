@@ -1,0 +1,12 @@
+# Ignore everything except for specific folders and their contents
+/*
+
+!.gitignore
+
+!/nvim/
+!/ghostty/
+!/nvim/**
+!/ghostty/**
+
+# Ignore local files which should be configured individually
+nvim/lua/local/*.lua
