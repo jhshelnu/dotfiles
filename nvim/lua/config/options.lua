@@ -36,3 +36,4 @@ opt.clipboard = "unnamedplus"  -- use system clipboard
 -- Splits
 opt.splitbelow = true          -- horizontal splits below current
 opt.splitright = true          -- vertical splits to the right
+

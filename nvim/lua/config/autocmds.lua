@@ -12,7 +12,6 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.go", "*.rs", "*.js", "*.ts" },
   callback = function()
-    -- organize imports via gopls
     local params = vim.lsp.util.make_range_params()
     params.context = { only = { "source.organizeImports" } }
     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 1000)
@@ -25,6 +24,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         end
       end
     end
-    vim.lsp.buf.format({ async = false }) -- format after imports
+    vim.lsp.buf.format({ async = false })
+  end,
+})
+
+-- highlight when yanking text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.hl.on_yank({
+      higroup = "Search",
+    })
   end,
 })
