@@ -74,7 +74,7 @@ keymap("n", "<leader>ff", function()
   telescope.find_files({
     cwd = project_root(),
     hidden = true,
-    no_ignore = true,
+    no_ignore = false,
   })
 end, { desc = "Find files from project root" })
 
@@ -82,7 +82,7 @@ keymap("n", "<leader>fg", function()
   telescope.live_grep({
     cwd = project_root(),
     hidden = true,
-    no_ignore = true,
+    no_ignore = false,
   })
 end, { desc = "Search text from project root" })
 

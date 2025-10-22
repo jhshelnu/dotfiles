@@ -38,7 +38,7 @@ return {
     local go_settings = {
       gopls = {
         gofumpt = true,
-        usePlaceholders = true,
+        usePlaceholders = false,
         completeUnimported = true,
         staticcheck = true,
         buildFlags = { "-tags=integration" },
