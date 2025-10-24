@@ -23,7 +23,7 @@ opt.inccommand = "nosplit"     -- live %s previews
 opt.termguicolors = true       -- enable 24-bit RGB colors
 opt.cursorline = true          -- highlight current line
 opt.signcolumn = "yes"         -- always show sign column (for git/lsp symbols)
-opt.scrolloff = 8              -- keep 8 lines visible when scrolling
+opt.scrolloff = 99999          -- keep cursor centered vertically
 opt.wrap = false               -- don’t wrap long lines
 
 -- Performance

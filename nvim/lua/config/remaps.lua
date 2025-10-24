@@ -7,6 +7,10 @@ local opts = { noremap = true, silent = true }
 local telescope = require("telescope.builtin")
 local gitsigns = require("gitsigns")
 
+-- half-page scrolling
+keymap("n", "<Down>", "<C-d>", opts)
+keymap("n", "<Up>", "<C-u>", opts)
+
 -- Keep cursor centered when scrolling or jumping
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
@@ -86,6 +90,9 @@ keymap("n", "<leader>fg", function()
   })
 end, { desc = "Search text from project root" })
 
+
+vim.keymap.set("n", "<leader>fi", require("telescope.builtin").current_buffer_fuzzy_find, { desc = "Search in current file" })
+
 -- running tests
 keymap("n", "<leader>tt", ":TestNearest<CR>", { desc = "Run nearest test" })
 keymap("n", "<leader>tf", ":TestFile<CR>", { desc = "Run tests in file" })
@@ -99,9 +106,4 @@ keymap("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk" })
 keymap("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "Undo stage" })
 keymap("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Reset hunk" })
 keymap("n", "<leader>hd", gitsigns.preview_hunk, { desc = "Preview hunk" })
-
--- lsp
-keymap("n", "<leader>e", function()
-  vim.diagnostic.open_float(nil, { focus = false, scope = "cursor", border = "rounded" })
-end, { desc = "Show diagnostics at cursor" })
 
