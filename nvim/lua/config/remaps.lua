@@ -10,6 +10,8 @@ local gitsigns = require("gitsigns")
 -- half-page scrolling
 keymap("n", "<Down>", "<C-d>", opts)
 keymap("n", "<Up>", "<C-u>", opts)
+keymap("v", "<Down>", "<C-d>", opts)
+keymap("v", "<Up>", "<C-u>", opts)
 
 -- Keep cursor centered when scrolling or jumping
 keymap("n", "<C-d>", "<C-d>zz", opts)
