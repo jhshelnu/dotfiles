@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("QuitPre", {
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  cmd = { "NvimTreeToggle", "NvimTreeFindFile" },
+  event = "VimEnter",
   keys = {
     { "<leader>ft", "<cmd>NvimTreeToggle<CR>",     desc = "File tree" },
     { "<leader>fT", "<cmd>NvimTreeFindFile<CR>",   desc = "Reveal current file" },
@@ -60,4 +60,8 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require("nvim-tree").setup(opts)
+
+  end
 }

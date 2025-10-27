@@ -96,8 +96,7 @@ keymap("n", "<leader>fg", function()
   })
 end, { desc = "Search text from project root" })
 
-
-vim.keymap.set("n", "<leader>fi", require("telescope.builtin").current_buffer_fuzzy_find, { desc = "Search in current file" })
+keymap("n", "<leader>fi", telescope.current_buffer_fuzzy_find, { desc = "Search in current file" })
 
 -- running tests
 keymap("n", "<leader>tt", ":TestNearest<CR>", { desc = "Run nearest test" })
@@ -112,4 +111,8 @@ keymap("n", "<leader>hs", gitsigns.stage_hunk, { desc = "Stage hunk" })
 keymap("n", "<leader>hu", gitsigns.undo_stage_hunk, { desc = "Undo stage" })
 keymap("n", "<leader>hr", gitsigns.reset_hunk, { desc = "Reset hunk" })
 keymap("n", "<leader>hd", gitsigns.preview_hunk, { desc = "Preview hunk" })
+
+-- commenting code
+keymap("n", '<leader>/', '<Plug>(comment_toggle_linewise_current)', opts)
+keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', opts)
 
