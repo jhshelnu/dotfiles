@@ -59,7 +59,7 @@ keymap("n", "<leader>lf", function()
 end, opts)
 
 -- helper to detect project root (via Git)
-local function project_root()
+local function project_root_or_cwd()
   local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
   if vim.v.shell_error == 0 then
     return git_root
@@ -71,12 +71,17 @@ end
 -- navigation
 -- (<leader>ft opens the file tree, configured in plugins/nvim-tree.lua)
 keymap("n", "<leader>fr", function ()
-  telescope.oldfiles({ initial_mode = "normal" })
+  telescope.oldfiles({
+    initial_mode = "normal",
+    cwd = project_root_or_cwd(),
+    cwd_only = true,
+   })
 end, { desc = "Find recent files" })
 
 keymap("n", "<leader>ff", function()
   telescope.find_files({
-    cwd = project_root(),
+    cwd = project_root_or_cwd(),
+    cwd_only = true,
     hidden = true,
     no_ignore = false,
   })
@@ -84,7 +89,8 @@ end, { desc = "Find files from project root" })
 
 keymap("n", "<leader>fg", function()
   telescope.live_grep({
-    cwd = project_root(),
+    cwd = project_root_or_cwd(),
+    cwd_only = true,
     hidden = true,
     no_ignore = false,
   })
