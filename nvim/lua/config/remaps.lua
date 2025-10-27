@@ -8,10 +8,8 @@ local telescope = require("telescope.builtin")
 local gitsigns = require("gitsigns")
 
 -- half-page scrolling
-keymap("n", "<Down>", "<C-d>", opts)
-keymap("n", "<Up>", "<C-u>", opts)
-keymap("v", "<Down>", "<C-d>", opts)
-keymap("v", "<Up>", "<C-u>", opts)
+keymap({"n", "v"}, "<Down>", "<C-d>", opts)
+keymap({"n", "v"}, "<Up>", "<C-u>", opts)
 
 -- Keep cursor centered when scrolling or jumping
 keymap("n", "<C-d>", "<C-d>zz", opts)
