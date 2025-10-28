@@ -4,6 +4,11 @@ min_time = 20_000
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
 
+[git_status]
+ahead = "↑"
+behind = "↓"
+diverged = "↕"
+
 [golang]
 disabled = true
 
