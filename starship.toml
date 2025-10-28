@@ -4,3 +4,23 @@ min_time = 20_000
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
 
+[golang]
+disabled = true
+
+[buf]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[rust]
+disabled = true
