@@ -1,6 +1,7 @@
 theme = Rose Pine
 
-font-family = JetBrains Mono
+font-family = JetBrainsMono Nerd Font
+font-feature = -liga
 font-size   = 18
 
 window-padding-x = 15
