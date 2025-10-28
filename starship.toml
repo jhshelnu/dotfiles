@@ -3,3 +3,6 @@ min_time = 20_000
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
+
+[jobs]
+disabled = true
