@@ -7,6 +7,7 @@
 !/ghostty/
 !/nvim/**
 !/ghostty/**
+!starship.toml
 
 # Ignore local files which should be configured individually
 nvim/lua/local/*.lua
