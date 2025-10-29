@@ -48,6 +48,11 @@ return {
         ["rust-analyzer"] = {
           cargo = { allFeatures = true },
           checkOnSave = true,
+          imports = {
+            granularity = { group = "module", enforce = true },
+            prefix = "crate",
+          },
+          check = { command = "clippy" },
         },
       },
     })

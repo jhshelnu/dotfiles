@@ -47,6 +47,14 @@ keymap("n", "<leader>ju", function()
   })
 end, { desc = "LSP: Go to usage(s)" })
 
+-- Go back to recent places
+vim.keymap.set("n", "<leader>jr", function()
+  telescope.jumplist({
+    jump_type = "replace",
+    initial_mode = "normal",
+  })
+end, { desc = "Jump list" })
+
 -- LSP
 keymap("n", "<leader>lh", vim.lsp.buf.hover,         opts)
 keymap("n", "<leader>lr", vim.lsp.buf.rename,        opts)
