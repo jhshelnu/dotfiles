@@ -11,29 +11,15 @@ return {
     {
       "williamboman/mason-lspconfig.nvim",
       opts = function()
-        require("mason-lspconfig").setup()
+        require("mason-lspconfig").setup({
+          ensure_installed = { "gopls", "rust_analyzer", "lua_ls" },
+          automatic_installation = true,
+        })
       end,
     },
   },
   config = function()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities.textDocument.completion.completionItem = {
-      documentationFormat = { "markdown", "plaintext" },
-      snippetSupport = true,
-      preselectSupport = true,
-      insertReplaceSupport = true,
-      labelDetailsSupport = true,
-      deprecatedSupport = true,
-      commitCharactersSupport = true,
-      tagSupport = { valueSet = { 1 } },
-      resolveSupport = {
-        properties = {
-          "documentation",
-          "detail",
-          "additionalTextEdits",
-        },
-      },
-    }
 
     local go_settings = {
       gopls = {
@@ -58,6 +44,12 @@ return {
 
     vim.lsp.config("rust_analyzer", {
       capabilities = capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = { allFeatures = true },
+          checkOnSave = true,
+        },
+      },
     })
 
     vim.lsp.config("lua_ls", {
