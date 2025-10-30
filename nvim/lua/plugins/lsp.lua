@@ -34,7 +34,7 @@ return {
     local ok, prefixTable = pcall(require, "local.go_import_prefixes")
     if ok then
       local prefixes = table.concat(prefixTable, ",")
-        go_settings.gopls["formatting.local"] = prefixes
+      go_settings.gopls["formatting.local"] = prefixes
     end
 
     vim.lsp.config("gopls", {
@@ -51,6 +51,11 @@ return {
           imports = {
             granularity = { group = "module", enforce = true },
             prefix = "crate",
+          },
+          completion = {
+            callable = {
+              snippets = "add_parentheses"
+            },
           },
           check = { command = "clippy" },
         },

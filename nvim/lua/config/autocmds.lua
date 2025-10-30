@@ -10,8 +10,13 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
 
 -- Auto-format + organize imports on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.go", "*.rs", "*.js", "*.ts" },
+  pattern = { "*.lua", "*.go", "*.rs", "*.js", "*.ts" },
   callback = function()
+    -- Get the current window and cursor position so it can be restored after the formatting.
+    local win = vim.api.nvim_get_current_win()
+    local cursor_pos = vim.api.nvim_win_get_cursor(win)
+
+    -- helper function to "apply all" for a particular kind of lsp action
     local function apply_by_kind(kind)
       local params = vim.lsp.util.make_range_params()
       params.context = { only = { kind } }
@@ -30,6 +35,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     apply_by_kind("source.organizeImports")
     apply_by_kind("source.fixAll")
     vim.lsp.buf.format({ async = false })
+
+    -- Restore the cursor position
+    vim.api.nvim_win_set_cursor(win, cursor_pos)
   end,
 })
 
@@ -41,4 +49,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     })
   end,
 })
-
