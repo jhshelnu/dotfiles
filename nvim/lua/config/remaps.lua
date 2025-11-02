@@ -8,8 +8,8 @@ local telescope = require("telescope.builtin")
 local gitsigns = require("gitsigns")
 
 -- half-page scrolling
-keymap({"n", "v"}, "<Down>", "<C-d>", opts)
-keymap({"n", "v"}, "<Up>", "<C-u>", opts)
+keymap({ "n", "v" }, "<Down>", "<C-d>", opts)
+keymap({ "n", "v" }, "<Up>", "<C-u>", opts)
 
 -- Keep cursor centered when scrolling or jumping
 keymap("n", "<C-d>", "<C-d>zz", opts)
@@ -21,9 +21,9 @@ keymap("n", "}", "}zz", opts)
 
 -- Tab/Shift Tab behavior
 keymap("i", "<S-Tab>", "<C-d>", opts)
-keymap("v", "<Tab>",   ">gv", opts)
+keymap("v", "<Tab>", ">gv", opts)
 keymap("v", "<S-Tab>", "<gv", opts)
-keymap("n", "<Tab>",   ">>", opts)
+keymap("n", "<Tab>", ">>", opts)
 keymap("n", "<S-Tab>", "<<", opts)
 
 -- Easier saving
@@ -56,12 +56,12 @@ vim.keymap.set("n", "<leader>jr", function()
 end, { desc = "Jump list" })
 
 -- LSP
-keymap("n", "<leader>lh", vim.lsp.buf.hover,         opts)
-keymap("n", "<leader>lr", vim.lsp.buf.rename,        opts)
-keymap("n", "<leader>la", vim.lsp.buf.code_action,   opts)
+keymap("n", "<leader>lh", vim.lsp.buf.hover, opts)
+keymap("n", "<leader>lr", vim.lsp.buf.rename, opts)
+keymap("n", "<leader>la", vim.lsp.buf.code_action, opts)
 keymap("n", "<leader>ll", vim.diagnostic.open_float, opts)
-keymap("n", "<leader>lp", vim.diagnostic.goto_prev,  opts)
-keymap("n", "<leader>ln", vim.diagnostic.goto_next,  opts)
+keymap("n", "<leader>lp", vim.diagnostic.goto_prev, opts)
+keymap("n", "<leader>ln", vim.diagnostic.goto_next, opts)
 keymap("n", "<leader>lf", function()
   telescope.diagnostics({ bufnr = 0, initial_mode = "normal" })
 end, opts)
@@ -78,12 +78,12 @@ end
 
 -- navigation
 -- (<leader>ft opens the file tree, configured in plugins/nvim-tree.lua)
-keymap("n", "<leader>fr", function ()
+keymap("n", "<leader>fr", function()
   telescope.oldfiles({
     initial_mode = "normal",
     cwd = project_root_or_cwd(),
     cwd_only = true,
-   })
+  })
 end, { desc = "Find recent files" })
 
 keymap("n", "<leader>ff", function()
@@ -124,3 +124,8 @@ keymap("n", "<leader>hd", gitsigns.preview_hunk, { desc = "Preview hunk" })
 keymap("n", '<leader>/', '<Plug>(comment_toggle_linewise_current)', opts)
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', opts)
 
+-- terminal
+local float_term = require("toggleterm.terminal").Terminal:new({ direction = "float" })
+vim.keymap.set("n", "<leader>s", function()
+  float_term:toggle()
+end, { desc = "Toggle floating terminal" })
