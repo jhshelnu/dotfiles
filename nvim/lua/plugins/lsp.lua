@@ -48,8 +48,9 @@ return {
         ["rust-analyzer"] = {
           cargo = { allFeatures = true },
           checkOnSave = true,
+          check = { command = "check" },
           imports = {
-            granularity = { group = "module", enforce = true },
+            granularity = { group = "crate", enforce = true },
             prefix = "crate",
           },
           completion = {
@@ -57,7 +58,12 @@ return {
               snippets = "add_parentheses"
             },
           },
-          check = { command = "clippy" },
+          rustfmt = {
+            extraArgs = {
+              "--config",
+              "imports_granularity=Crate",
+            },
+          },
         },
       },
     })
