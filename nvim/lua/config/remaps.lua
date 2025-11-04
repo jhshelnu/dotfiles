@@ -125,7 +125,7 @@ keymap("n", '<leader>/', '<Plug>(comment_toggle_linewise_current)', opts)
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', opts)
 
 -- terminal
-local float_term = require("toggleterm.terminal").Terminal:new({ direction = "float" })
 vim.keymap.set("n", "<leader>s", function()
-  float_term:toggle()
+  require("util.term").toggle()
 end, { desc = "Toggle floating terminal" })
+keymap("t", "<Esc>", [[<C-\><C-n>]], opts)

@@ -1,4 +1,5 @@
 require("config.lazy")
+require("util.term").init()
 require("config.options")
 require("config.remaps")
 require("config.autocmds")
