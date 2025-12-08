@@ -43,13 +43,13 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   event = "VimEnter",
   keys = {
-    { "<leader>ft", "<cmd>NvimTreeToggle<CR>",     desc = "File tree" },
-    { "<leader>fT", "<cmd>NvimTreeFindFile<CR>",   desc = "Reveal current file" },
+    { "<leader>ft", "<cmd>NvimTreeToggle<CR>",   desc = "File tree" },
+    { "<leader>fT", "<cmd>NvimTreeFindFile<CR>", desc = "Reveal current file" },
   },
   opts = {
     view = { width = 32, side = "left" },
     renderer = { group_empty = true },
-    update_focused_file = { enable = true, update_root = true },
+    update_focused_file = { enable = true, update_root = false },
     filters = { dotfiles = false, git_ignored = false },
     git = { enable = true },
     disable_netrw = true,
@@ -62,6 +62,5 @@ return {
   },
   config = function(_, opts)
     require("nvim-tree").setup(opts)
-
   end
 }

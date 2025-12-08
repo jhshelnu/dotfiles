@@ -31,7 +31,12 @@ keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>q", ":q<CR>", opts)
 
 -- Go to definition(s)
-keymap("n", "<leader>jd", vim.lsp.buf.definition, { desc = "LSP: Go to definition(s)" })
+keymap("n", "<leader>jd", function()
+  telescope.lsp_definitions({
+    jump_type = "replace",
+    initial_mode = "normal",
+  })
+end, { desc = "LSP: Go to definition(s)" })
 
 -- Go to implementation(s)
 keymap("n", "<leader>ji", function()
