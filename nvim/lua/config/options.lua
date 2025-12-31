@@ -1,5 +1,9 @@
 local opt = vim.opt
 
+-- tab titles
+opt.title = true
+opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " (nvim)"
+
 -- Line numbers
 opt.number = true         -- show absolute line numbers
 opt.relativenumber = true -- show relative line numbers

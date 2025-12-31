@@ -47,7 +47,7 @@ return {
     { "<leader>fT", "<cmd>NvimTreeFindFile<CR>", desc = "Reveal current file" },
   },
   opts = {
-    view = { width = 32, side = "left" },
+    view = { width = 50, side = "left" },
     renderer = { group_empty = true },
     update_focused_file = { enable = true, update_root = false },
     filters = { dotfiles = false, git_ignored = false },
