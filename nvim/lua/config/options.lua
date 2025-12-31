@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 -- tab titles
-opt.title = true
+opt.title = false
 opt.titlestring = vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. " (nvim)"
 
 -- Line numbers

@@ -7,6 +7,4 @@ window-padding-x = 15
 window-padding-y = 15
 window-save-state = always
 
-keybind = ctrl+j=goto_split:next
-keybind = cmd+d=new_split:down
-keybind = cmd+shift+d=new_split:right
+shell-integration-features = no-title
