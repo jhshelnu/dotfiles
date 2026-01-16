@@ -46,9 +46,18 @@ return {
       capabilities = capabilities,
       settings = {
         ["rust-analyzer"] = {
-          cargo = { allFeatures = true },
+          cargo = {
+            allFeatures = true,
+            allTargets = true,  
+          },
           checkOnSave = true,
-          check = { command = "check" },
+          check = {
+            command = "check",
+            allTargets = true,
+          },
+          cfg = {
+            setTest = true,
+          },
           imports = {
             granularity = { group = "crate", enforce = true },
             prefix = "crate",
