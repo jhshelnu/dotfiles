@@ -68,3 +68,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     })
   end,
 })
+
+-- Disable auto line wrapping in Rust (ftplugin sets textwidth=99)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "rust",
+  callback = function()
+    vim.opt_local.textwidth = 0
+    vim.opt_local.formatoptions:remove("t")
+    vim.opt_local.formatoptions:remove("c")
+  end,
+})
