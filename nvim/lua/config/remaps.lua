@@ -71,14 +71,9 @@ keymap("n", "<leader>lf", function()
   telescope.diagnostics({ bufnr = 0, initial_mode = "normal" })
 end, opts)
 
--- helper to detect project root (via Git)
+-- helper to detect project root (git -> jj -> cwd; see util.vcs)
 local function project_root_or_cwd()
-  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-  if vim.v.shell_error == 0 then
-    return git_root
-  else
-    return vim.loop.cwd()
-  end
+  return require("util.vcs").repo_root()
 end
 
 -- navigation

@@ -78,3 +78,24 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.formatoptions:remove("c")
   end,
 })
+
+-- Keep buffers fresh after jj rewrites files on disk (jj new/edit/undo/rebase),
+-- and after running jj in the toggleterm. Pairs with opt.autoread.
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave", "BufEnter" }, {
+  callback = function()
+    -- Only normal file buffers; skip terminals, prompts, etc.
+    if vim.bo.buftype == "" and vim.fn.mode() ~= "c" then
+      vim.cmd("silent! checktime")
+    end
+  end,
+})
+
+-- Re-render the gitsigns gutter after jj moves HEAD (returning focus / leaving
+-- the terminal). Guarded so it's a no-op if gitsigns isn't loaded yet.
+vim.api.nvim_create_autocmd({ "FocusGained", "TermLeave" }, {
+  callback = function()
+    pcall(function()
+      require("gitsigns").refresh()
+    end)
+  end,
+})

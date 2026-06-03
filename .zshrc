@@ -17,6 +17,13 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+# jj autocompletion
+autoload -Uz compinit && compinit
+# (guarded so this file stays portable to machines without jj installed)
+if command -v jj &>/dev/null; then
+  source <(COMPLETE=zsh jj)
+fi
+
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 

@@ -34,6 +34,10 @@ opt.wrap = false         -- don’t wrap long lines
 opt.updatetime = 250 -- faster CursorHold events
 opt.timeoutlen = 500 -- timeout after hitting the leader key
 
+-- Reload files changed on disk (e.g. by jj new/edit/undo/rebase). Paired with
+-- the checktime autocmds in config/autocmds.lua.
+opt.autoread = true
+
 -- Clipboard
 opt.clipboard = "unnamedplus" -- use system clipboard
 
