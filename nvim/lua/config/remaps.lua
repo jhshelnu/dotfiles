@@ -30,6 +30,9 @@ keymap("n", "<S-Tab>", "<<", opts)
 keymap("n", "<leader>w", ":w<CR>", opts)
 keymap("n", "<leader>q", ":q<CR>", opts)
 
+-- Copy relative path
+keymap("n", "<leader>yp", [[<cmd>let @+ = expand("%")<CR>]], opts)
+
 -- Go to definition(s)
 keymap("n", "<leader>jd", function()
   telescope.lsp_definitions({
