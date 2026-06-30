@@ -17,21 +17,16 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-# jj autocompletion
+# shell completions
 autoload -Uz compinit && compinit
-# (guarded so this file stays portable to machines without jj installed)
-if command -v jj &>/dev/null; then
-  source <(COMPLETE=zsh jj)
-fi
+command -v jj      &>/dev/null && source <(COMPLETE=zsh jj)
+command -v kubectl &>/dev/null && source <(kubectl completion zsh)
+command -v op      &>/dev/null && source <(op completion zsh)
+command -v docker  &>/dev/null && source <(docker completion zsh)
+command -v rustup  &>/dev/null && source <(rustup completions zsh)
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
-
-# Set terminal tab title to current directory name
-function set_win_title() {
-    echo -ne "\033]0; $(basename "$PWD") \007"
-}
-precmd_functions+=(set_win_title)
 
 alias q="exit"
 
