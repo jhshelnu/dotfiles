@@ -126,15 +126,3 @@ keymap("n", "<leader>hd", gitsigns.preview_hunk, { desc = "Preview hunk" })
 -- commenting code
 keymap("n", '<leader>/', '<Plug>(comment_toggle_linewise_current)', opts)
 keymap('v', '<leader>/', '<Plug>(comment_toggle_linewise_visual)', opts)
-
--- terminal
-vim.keymap.set("n", "<leader>s", function()
-  require("util.term").toggle("s")
-end, { desc = "Toggle floating terminal (s)" })
-vim.keymap.set("n", "<leader>r", function()
-  require("util.term").toggle("r")
-end, { desc = "Toggle floating terminal (r)" })
-vim.keymap.set("n", "<leader>c", function()
-  require("util.term").toggle("c")
-end, { desc = "Toggle floating terminal (c)" })
-keymap("t", "<Esc>", [[<C-\><C-n>]], opts)

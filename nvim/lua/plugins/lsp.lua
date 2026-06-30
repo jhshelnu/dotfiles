@@ -43,12 +43,15 @@ return {
     })
 
     vim.lsp.config("rust_analyzer", {
+      -- Run the rustup-provided rust-analyzer instead of Mason's to ensure compatibility with the current cargo version installed.
+      -- Mason still installs its own copy of rust-analyzer for auto-enable, but it's never launched.
+      cmd = { vim.fn.expand("~/.cargo/bin/rust-analyzer") },
       capabilities = capabilities,
       settings = {
         ["rust-analyzer"] = {
           cargo = {
             allFeatures = true,
-            allTargets = true,  
+            allTargets = true,
           },
           checkOnSave = true,
           check = {

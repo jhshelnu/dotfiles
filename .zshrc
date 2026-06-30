@@ -35,5 +35,17 @@ precmd_functions+=(set_win_title)
 
 alias q="exit"
 
-# add starship hook
-eval "$(starship init zsh)"
+export EDITOR=nvim
+
+# VIM keybindings
+bindkey -v # enable vim mode
+export KEYTIMEOUT=1 # eliminate the delay when switching modes
+bindkey '^A' beginning-of-line # preserve this keybind in insert mode
+bindkey '^E' end-of-line # preserve this keybind in insert mode
+bindkey -M vicmd '_' vi-beginning-of-line # map underscore to the beginning of the line in command mode
+
+# setup starship if needed
+if [[ -z "$STARSHIP_INITIALIZED" ]]; then
+    eval "$(starship init zsh)"
+    STARSHIP_INITIALIZED=1
+fi
