@@ -1,13 +1,25 @@
+# reorder kubernetes module to after other modules
+format = '$all$kubernetes$line_break$character'
+
 [cmd_duration]
 disabled = true
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
 
+[git_commit]
+disabled = true
+
 [git_status]
+disabled = true
 ahead = "↑"
 behind = "↓"
 diverged = "↕"
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style)'
+style = 'bold blue'
 
 [golang]
 disabled = true
