@@ -1,0 +1,29 @@
+onboarding = false
+
+[terminal]
+default_shell = "fish"
+
+[keys]
+prefix             = "ctrl+f"
+previous_tab       = "alt+left"
+next_tab           = "alt+right"
+previous_workspace = "alt+up"
+next_workspace     = "alt+down"
+focus_pane_left    = "alt+h"
+focus_pane_down    = "alt+j"
+focus_pane_up      = "alt+k"
+focus_pane_right   = "alt+l"
+
+[[keys.command]]
+key = "alt+f" # ctrl+d to close
+type = "popup"
+command = "fish"
+width = "90%"
+height = "90%"
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [["state_icon", "workspace"], ["terminal_title_stripped"]]
+#claude = [["state_icon", "terminal_title_stripped"], ["workspace"]]
+
+[ui.toast]
+delivery = "system"

@@ -1,0 +1,28 @@
+[ui]
+default-command = "log"
+
+[revsets]
+log = 'present(@) | ancestors(trunk()..(visible_heads() & mine() & committer_date(after:"2 months ago")), 2) | trunk()'
+
+[working-copy]
+eol-conversion = "input"
+
+[remotes.origin]
+auto-track-bookmarks = "main | master | hs/* | harrison/*"
+fetch-bookmarks = "main | master | hs/* | harrison/*"
+fetch-tags = '~*' # don't fetch any tags by default
+
+[aliases]
+clone = ["git", "clone"]
+fetch = ["git", "fetch"]
+push = ["git", "push"]
+remote = ["git", "remote"]
+
+touch = ["metaedit", "--update-author-timestamp"]
+t = ["touch"]
+
+touch-branch = ["metaedit", "--update-author-timestamp", "-r", "trunk()..(@::)"]
+tb= ["touch-branch"]
+
+diff-branch = ["diff", "-s", "-r", "trunk()..(@::)"]
+db = ["diff-branch"]

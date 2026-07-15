@@ -1,14 +1,15 @@
-# Ignore everything except for specific folders and their contents
-/*
+# Ignore all files everywhere, but keep descending into directories.
+*
+!*/
 
-!.gitignore
-
-!/nvim/
-!/ghostty/
+!/.gitignore
+!/fish/config.fish
+!/ghostty/config
+!/herdr/config.toml
+!/jj/config.toml
 !/nvim/**
-!/ghostty/**
-!starship.toml
-!.zshrc
+!/starship.toml
+!/.zshrc
 
 # Ignore local files which should be configured individually
 nvim/lua/local/*.lua
