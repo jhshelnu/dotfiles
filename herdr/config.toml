@@ -1,5 +1,8 @@
 onboarding = false
 
+[theme]
+name = "rose-pine"
+
 [terminal]
 default_shell = "fish"
 
@@ -22,8 +25,9 @@ width = "90%"
 height = "90%"
 
 [ui.sidebar.agents.rows_by_agent]
-claude = [["state_icon", "workspace"], ["terminal_title_stripped"]]
-#claude = [["state_icon", "terminal_title_stripped"], ["workspace"]]
+claude = [["state_icon", "terminal_title_stripped"]]
+# claude = [["state_icon", "workspace"], ["terminal_title_stripped"]]
+# claude = [["state_icon", "terminal_title_stripped"], ["workspace"]]
 
 [ui.toast]
 delivery = "system"
