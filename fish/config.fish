@@ -22,4 +22,5 @@ if status is-interactive
     command -q rustup   && rustup completions fish | source
     command -q direnv   && direnv hook fish        | source
     command -q starship && starship init fish      | source
+    command -q herdr    && herdr completion fish   | source
 end
