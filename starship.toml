@@ -41,3 +41,6 @@ disabled = true
 
 [rust]
 disabled = true
+
+[lua]
+disabled = true

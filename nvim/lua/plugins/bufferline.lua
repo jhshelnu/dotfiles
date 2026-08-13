@@ -1,0 +1,5 @@
+-- disable the tab-bar
+return {
+  "akinsho/bufferline.nvim",
+  enabled = false,
+}
