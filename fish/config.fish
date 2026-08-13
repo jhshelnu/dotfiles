@@ -3,6 +3,8 @@ if status is-interactive
 
     set -gx EDITOR nvim
 
+    alias where 'which'
+
     fish_add_path /opt/homebrew/bin 
     fish_add_path /opt/homebrew/sbin
     fish_add_path $HOME/.local/bin

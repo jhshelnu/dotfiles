@@ -18,11 +18,11 @@ focus_pane_up      = "alt+k"
 focus_pane_right   = "alt+l"
 
 [[keys.command]]
-key = "alt+f" # ctrl+d to close
-type = "popup"
-command = "fish"
-width = "90%"
-height = "90%"
+# https://github.com/meerzulee/herdr-float
+key = "alt+f"
+type = "plugin_action"
+command = "herdr-float.toggle"
+description = "Toggle floating shell"
 
 [ui.sidebar.agents.rows_by_agent]
 claude = [["state_icon", "terminal_title_stripped"]]
