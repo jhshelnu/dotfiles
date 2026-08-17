@@ -9,7 +9,3 @@
 !/jj/config.toml
 !/nvim/**
 !/starship.toml
-!/.zshrc
-
-# Ignore local files which should be configured individually
-nvim/lua/local/*.lua

@@ -10,6 +10,6 @@ window-save-state = always
 command = /opt/homebrew/bin/fish -l
 shell-integration-features = no-title
 
-# Use Alt+Left/Right for pane focus in Zellij
+# Use Alt+Left/Right for pane focus in terminal multiplexers
 keybind = alt+arrow_left=unbind
 keybind = alt+arrow_right=unbind
