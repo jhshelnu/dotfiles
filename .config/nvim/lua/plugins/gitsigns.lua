@@ -29,5 +29,9 @@ local signs = {
 
 return {
   "lewis6991/gitsigns.nvim",
-  opts = { signs = signs, signs_staged = signs },
+  opts = {
+    signs = signs,
+    signs_staged = signs,
+    current_line_blame = true,
+  },
 }
