@@ -1,0 +1,49 @@
+" This contains my Vim-mode configuration for JetBrains IDEs.
+" It is a best-effort mirror of my neovim configuration.
+
+let mapleader=" "
+
+set number
+set relativenumber
+
+set clipboard+=unnamed,unnamedplus
+
+set ignorecase
+set smartcase
+
+set scrolloff=99999
+set incsearch
+
+" half-page nav, cursor centered
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+nnoremap <Down> <C-d>
+nnoremap <Up> <C-u>
+vnoremap <Down> <C-d>
+vnoremap <Up> <C-u>
+
+" center after search / paragraph jumps
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap { {zz
+nnoremap } }zz
+
+" Tab / Shift-Tab indent
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" toggle comment (vim-commentary)
+nmap <leader>/ gcc
+vmap <leader>/ gc
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
