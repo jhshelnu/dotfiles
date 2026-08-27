@@ -5,6 +5,8 @@ if status is-interactive
 
     alias where which
 
+    abbr kc kubectl
+
     fish_add_path /opt/homebrew/bin
     fish_add_path /opt/homebrew/sbin
     fish_add_path $HOME/.local/bin

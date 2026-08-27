@@ -11,6 +11,14 @@ return {
           hidden = true,
           ignored = true,
           jump = { close = true }, -- hide the tree after selecting a file
+          win = {
+            list = {
+              keys = {
+                ["<Down>"] = "list_scroll_down",
+                ["<Up>"] = "list_scroll_up",
+              },
+            },
+          },
         },
       },
     },
