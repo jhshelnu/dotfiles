@@ -1,8 +1,11 @@
 [ui]
 default-command = "log"
 
+[revset-aliases]
+"mutable_roots()" = "roots(trunk()..) & mutable()"
+
 [revsets]
-log = 'present(@) | ancestors(trunk()..(visible_heads() & mine() & committer_date(after:"2 months ago")), 2) | trunk()'
+log = 'present(@) | ancestors(trunk()..(visible_heads() & mine()), 2) | trunk()'
 
 [working-copy]
 eol-conversion = "input"
@@ -17,6 +20,7 @@ clone = ["git", "clone"]
 fetch = ["git", "fetch"]
 push = ["git", "push"]
 remote = ["git", "remote"]
+restack = ["rebase", "-o", "trunk()", "-s", "mutable_roots() & mine()"]
 
 touch = ["metaedit", "--update-author-timestamp"]
 t = ["touch"]
