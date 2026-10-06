@@ -10,6 +10,7 @@ if status is-interactive
     fish_add_path /opt/homebrew/bin
     fish_add_path /opt/homebrew/sbin
     fish_add_path $HOME/.local/bin
+    fish_add_path $HOME/.cargo/bin
 
     fish_vi_key_bindings
     bind -M insert \ca beginning-of-line # ctrl-a in insert mode
